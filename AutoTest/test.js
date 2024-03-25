@@ -177,9 +177,9 @@ describe('9. ArrPushNum', () => {
     describe('Имеет базовое условие для функции с рекурсией', () => {
 
         it('Проверка условия', () => {
-            assert.strictEqual(factorial(-1), 1)
-            assert.strictEqual(factorial(0), 1);
-            assert.strictEqual(factorial(1), 1);
+            assert.strictEqual(arrPushNum(-1), 1)
+            assert.strictEqual(arrPushNum(0), 1);
+            assert.strictEqual(arrPushNum(1), 1);
         });
     })
 
