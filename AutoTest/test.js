@@ -201,12 +201,12 @@ describe('10.ArrSmashFunc', () => {
     describe('Имеет базовое условие на тип', () => {
 
         it('Проверка условия', () => {
-            assert.isNotArray(removeFalseValue('[1, 2, 3, 4]'), false)
+            assert.isNotArray(arrSmashFunc('[1, 2, 3, 4]'), false)
         });
     })
 
 
-    describe('Проверяет содержит ли первая строка все символы второй', () => {
+    describe('Заполняет массив числами от 1 до n', () => {
 
         it('Подставление значений', () => {
             assert.deepEqual(arrSmashFunc([1, 2, 3, 4, 5, 6], 2), [[1, 2], [1, 2], [1, 2]])
