@@ -24,11 +24,10 @@ describe('1. Factorial', () => {
 
 //Задача номер 2
 describe('2. StringLength', () => {
-    describe('Имеет базовое условие на тип', () => {
+    describe('Имеет базовое условие на тип возвращаемого значения', () => {
             it('Проверка условия', () => {
-                assert.isNotString(stringLength(12321), false)
+                assert.isNumber(stringLength('sad ADADfad adadax'), 7);
             });
-
     })
 
     describe('Считает длину самого длинного слова в строке', () => {
@@ -46,9 +45,9 @@ describe('2. StringLength', () => {
 
 //Задача номер 3
 describe('3. SubArrayMax', () => {
-    describe('Имеет базовое условие на тип', () => {
+    describe('Имеет базовое условие на тип возвращаемого значения', () => {
             it('Проверка условия', () => {
-                assert.isNotArray(subArrayMax('[1, 2, 3, 4]'), false)
+                assert.isArray(subArrayMax([[14, 2, -1], [55, 23, 11, -11], [2, 7, 1]]),  [14, 55, 7])
             });
 
     })
@@ -57,7 +56,7 @@ describe('3. SubArrayMax', () => {
 
         it('Подставление значений', () => {
            assert.deepEqual(subArrayMax([[14, 2, -1], [55, 23, 11, -11], [2, 7, 1]]), [14, 55, 7]);
-           assert.deepEqual(subArrayMax([[1, 2, 3], [4, 5], [6, 7, 8, 9]]), [3, 5, 9]);
+           assert.deepEqual(subArrayMax([[-1, -2, -3], [-4, -5], [-6, -7, -8, -9]]), [-1, -4, -6]);
            assert.deepEqual(subArrayMax([[7, -2, 12], [6, 2], [16, 67, 18, -9]]), [12, 6, 67]); 
            assert.deepEqual(subArrayMax([[3, 1, 1.5], [4, 1], [27, 12, -3, 8]]), [3, 4, 27]); 
         });
@@ -68,9 +67,9 @@ describe('3. SubArrayMax', () => {
 
 //Задача номер 4
 describe('4. MaxLengthString', () => {
-    describe('Имеет базовое условие на тип', () => {
+    describe('Имеет базовое условие на тип возвращаемого значения', () => {
             it('Проверка условия', () => {
-                assert.isNotString(maxLengthString(12321), false)
+                assert.isString(maxLengthString('Helloooo', 6), 'Helloo...')
             });
 
     })
@@ -90,9 +89,9 @@ describe('4. MaxLengthString', () => {
 
 //Задача номер 5
 describe('5. UpRegister', () => {
-    describe('Имеет базовое условие на тип', () => {
+    describe('Имеет базовое условие на тип возвращаемого значения', () => {
             it('Проверка условия', () => {
-                assert.isNotString(upRegister(12321), false)
+                assert.isString(upRegister('beaUtiFuLLy dAys'), 'Beautifully Days')
             });
 
     })
@@ -112,9 +111,11 @@ describe('5. UpRegister', () => {
 
 //Задача номер 6
 describe('6. CopyElByArray', () => {
-    describe('Имеет базовое условие на тип', () => {
+    describe('Имеет базовое условие на тип возвращаемого значения', () => {
             it('Проверка условия', () => {
-                assert.isNotArray(copyElByArray('[1, 2, 3, 4]'), false)
+                assert.isArray(copyElByArray([1, 2, 3], [4, 5]), [4, 1, 2, 3, 5])
+                //проверка на мутацию (попытка)
+                assert.equal(copyElByArray([1, 2, 3], [4, 5]), [4, 1, 2, 3, 5])
             });
 
     })
@@ -123,7 +124,7 @@ describe('6. CopyElByArray', () => {
 
         it('Подставление значений', () => {
            assert.deepEqual(copyElByArray([1, 2, 3], [4, 5], 1), [4, 1, 2, 3, 5]);
-           assert.deepEqual(copyElByArray([2, 4, 1], [3, 6], 0), [2, 4, 1, 3, 6]);
+           assert.deepEqual(copyElByArray(['hell', 4, 1], [3, 'very'], 0), ['hell', 4, 1, 3, 'very']);
            assert.deepEqual(copyElByArray([1, 4], [8, 2, 3, 5], 2), [8, 2, 1, 4, 3, 5]);
            assert.deepEqual(copyElByArray([9, 7, 5, 1, 4], [11, 23], 3), [11, 23, 9, 7, 5, 1, 4 ]);
         });
@@ -134,18 +135,19 @@ describe('6. CopyElByArray', () => {
 
 //Задача номер 7
 describe('7. RemoveFalseValue', () => {
-    describe('Имеет базовое условие на тип', () => {
+    describe('Имеет базовое условие на тип возвращаемого значения', () => {
             it('Проверка условия', () => {
-                assert.isNotArray(removeFalseValue('[1, 2, 3, 4]'), false)
+                assert.isArray(removeFalseValue(['hello', 0, '', false, ,'Egor', -0]), [ 'hello', 'Egor'])
             });
     })
 
     describe('Удаляет все ложные значения в массиве', () => {
 
         it('Подставление значений', () => {
-           assert.deepEqual(removeFalseValue( ['hello', 0, '', false, ,'Egor', -0,]),[ 'hello', 'Egor'] );
-           assert.deepEqual(removeFalseValue( [77, 0, '', undefined, ,'mmtr', -0,]),[ 77, 'mmtr'] );
+           assert.deepEqual(removeFalseValue( ['hello', 0, '', false, ,'Egor', -0]),[ 'hello', 'Egor'] );
+           assert.deepEqual(removeFalseValue( [77, {pass: 12}, ,'mmtr']),[ 77, {pass: 12}, 'mmtr'] );
            assert.deepEqual(removeFalseValue([null, 'proto', true]) , ['proto', true]);
+           assert.deepEqual(removeFalseValue([null, undefined, undefined]) , []);
         });
 
     });
@@ -154,9 +156,9 @@ describe('7. RemoveFalseValue', () => {
 
 //Задача номер 8
 describe('8. ArrStrComparsion', () => {
-    describe('Имеет базовое условие на тип', () => {
+    describe('Имеет базовое условие на тип возвращаемого значения', () => {
             it('Проверка условия', () => {
-                assert.isNotArray(arrStrComparsion('[1, 2, 3, 4]'), false)
+                assert.isBoolean(arrStrComparsion(['amry', 'army']), true)
             });
 
     })
@@ -173,13 +175,34 @@ describe('8. ArrStrComparsion', () => {
 
 
 //Задача номер 9
-describe('9. ArrPushNum', () => {
+describe('9.ArrSmashFunc', () => {
+    describe('Имеет базовое условие на тип возвращаемого значения', () => {
+
+        it('Проверка условия', () => {
+            assert.isArray(arrSmashFunc([1, 2, 3, 4, 5, 6],  [[1, 2], [1, 2], [1, 2]]))
+        });
+    })
+
+
+    describe('Заполняет массив числами от 1 до n', () => {
+
+        it('Подставление значений', () => {
+            assert.deepEqual(arrSmashFunc([1, 2, 3, 4, 5, 6], 2), [[1, 2], [1, 2], [1, 2]])
+            assert.deepEqual(arrSmashFunc([1, 2, 3, 4, 5, 6], 3), [[1, 2, 3], [1, 2, 3]])
+            assert.deepEqual(arrSmashFunc([1, 2, 3, 4, 5, 6], 4), [[1, 2, 3, 4], [1, 2, 3, 4]])
+        });
+    });
+});
+
+
+
+//Задача номер 10
+describe('10. ArrPushNum', () => {
     describe('Имеет базовое условие для функции с рекурсией', () => {
 
         it('Проверка условия', () => {
-            assert.strictEqual(arrPushNum(-1), 1)
-            assert.strictEqual(arrPushNum(0), 1);
-            assert.strictEqual(arrPushNum(1), 1);
+            assert.isArray(arrPushNum(5, []))
+            assert.isArray(arrPushNum(-1, []))
         });
     })
 
@@ -195,24 +218,4 @@ describe('9. ArrPushNum', () => {
     });
 });
 
-
-//Задача номер 10
-describe('10.ArrSmashFunc', () => {
-    describe('Имеет базовое условие на тип', () => {
-
-        it('Проверка условия', () => {
-            assert.isNotArray(arrSmashFunc('[1, 2, 3, 4]'), false)
-        });
-    })
-
-
-    describe('Заполняет массив числами от 1 до n', () => {
-
-        it('Подставление значений', () => {
-            assert.deepEqual(arrSmashFunc([1, 2, 3, 4, 5, 6], 2), [[1, 2], [1, 2], [1, 2]])
-            assert.deepEqual(arrSmashFunc([1, 2, 3, 4, 5, 6], 3), [[1, 2, 3], [1, 2, 3]])
-            assert.deepEqual(arrSmashFunc([1, 2, 3, 4, 5, 6], 4), [[1, 2, 3, 4], [1, 2, 3, 4]])
-        });
-    });
-});
 
