@@ -150,3 +150,69 @@ describe('7. RemoveFalseValue', () => {
 
     });
 });
+
+
+//Задача номер 8
+describe('8. ArrStrComparsion', () => {
+    describe('Имеет базовое условие на тип', () => {
+            it('Проверка условия', () => {
+                assert.isNotArray(arrStrComparsion('[1, 2, 3, 4]'), false)
+            });
+
+    })
+
+    describe('Проверяет содержит ли первая строка все символы второй', () => {
+
+        it('Подставление значений', () => {
+            assert.equal(arrStrComparsion(['amry', 'army']), true);
+            assert.equal(arrStrComparsion(['madam', 'Damam']), true);
+            assert.equal(arrStrComparsion(['proto', 'otorp']), true);
+        });
+    });
+});
+
+
+//Задача номер 9
+describe('9. ArrPushNum', () => {
+    describe('Имеет базовое условие для функции с рекурсией', () => {
+
+        it('Проверка условия', () => {
+            assert.strictEqual(factorial(-1), 1)
+            assert.strictEqual(factorial(0), 1);
+            assert.strictEqual(factorial(1), 1);
+        });
+    })
+
+
+    describe('Проверяет содержит ли первая строка все символы второй', () => {
+
+        it('Подставление значений', () => {
+            assert.deepEqual(arrPushNum(5, []), [5, 4, 3, 2, 1]);
+            assert.deepEqual(arrPushNum(10, []), [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]);
+            assert.deepEqual(arrPushNum(3, []), [3, 2, 1]);
+            assert.deepEqual(arrPushNum(0, []), []);
+        });
+    });
+});
+
+
+//Задача номер 10
+describe('10.ArrSmashFunc', () => {
+    describe('Имеет базовое условие на тип', () => {
+
+        it('Проверка условия', () => {
+            assert.isNotArray(removeFalseValue('[1, 2, 3, 4]'), false)
+        });
+    })
+
+
+    describe('Проверяет содержит ли первая строка все символы второй', () => {
+
+        it('Подставление значений', () => {
+            assert.deepEqual(arrSmashFunc([1, 2, 3, 4, 5, 6], 2), [[1, 2], [1, 2], [1, 2]])
+            assert.deepEqual(arrSmashFunc([1, 2, 3, 4, 5, 6], 3), [[1, 2, 3], [1, 2, 3]])
+            assert.deepEqual(arrSmashFunc([1, 2, 3, 4, 5, 6], 4), [[1, 2, 3, 4], [1, 2, 3, 4]])
+        });
+    });
+});
+

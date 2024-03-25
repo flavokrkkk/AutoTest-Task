@@ -88,8 +88,33 @@ console.log(removeFalseValue([-1, 'hello', 23]))
 //Задача номер 8 =========================================================
 const arrStr = ["amry", "army"]
 
-const arrStrComparsion = (arr) => arr[1].toLowerCase() == arr[1].toLowerCase().split('').map(i => {return arr[0].toLowerCase().split('').find(j => j === i)}).join('')
+const arrStrComparsion = (arr) => Array.isArray(arr) ? arr[1].toLowerCase() == arr[1].toLowerCase().split('').map(i => {return arr[0].toLowerCase().split('').find(j => j === i)}).join('') : false
 
 console.log(arrStrComparsion(arrStr))
 
-// 'army' == ['army'] 
+
+// Задача номер 10  ====================================================
+
+const arrPushNum = (n, arr) => {
+    if (n <= 0) {
+       return arr
+    } else {
+       arr.push(n)
+       return arrPushNum(n - 1, arr)
+    }
+ }
+ 
+ console.log(arrPushNum(5, []))
+ 
+ // Задача номер 9 ====================================================
+
+ const arr = [1, 2, 3, 4, 5, 6]
+
+ const arrSmashFunc = (arr, n) => {
+    let  ff = []
+    for(let i = 0; i < arr.length / n; i++) {
+        ff.push(arr.slice(0, n))
+    }
+    return ff
+}
+console.log(arrSmashFunc(arr, 2))
