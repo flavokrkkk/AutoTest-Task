@@ -115,7 +115,7 @@ describe('6. CopyElByArray', () => {
             it('Проверка условия', () => {
                 assert.isArray(copyElByArray([1, 2, 3], [4, 5]), [4, 1, 2, 3, 5])
                 //проверка на мутацию (попытка)
-                assert.equal(copyElByArray([1, 2, 3], [4, 5]), [4, 1, 2, 3, 5])
+                assert.deepEqual(copyElByArray([1, 2, 3], [4, 5]), [1, 2, 3, 4, 5])
             });
 
     })
