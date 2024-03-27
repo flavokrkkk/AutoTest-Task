@@ -30,7 +30,7 @@ console.log(stringLength('adfsds sss ww'))
 
 const subArrayMax = (arr) => arr.map(i => Math.max(...i)) 
 
-console.log(subArrayMax([[1, 2, 3], [4, 5], [6, 7, 8, 9]]))
+console.log(subArrayMax([[1, 'a', 3], [4, 5], [6, 7, 8, 9]]))
 
 //Задача номер 4 ================================================
 
@@ -82,7 +82,7 @@ console.log(arrStrComparsion(arrStr))
 // Задача номер 10  ====================================================
 
 const arrPushNum = (n, arr) => {
-    if (n <= 0) {
+    if (n <= 0 || isNaN(n)) {
        return arr
     } else {
        arr.push(n)
@@ -90,11 +90,11 @@ const arrPushNum = (n, arr) => {
     }
  }
  
- console.log(arrPushNum(5, []))
+ console.log(arrPushNum('hello', []))
  
  // Задача номер 9 ====================================================
 
- const arr = [1, 2, 3, 4, 5, 6]
+ const arr = ['Never', 'Any', 'Void', 'Extends', 'Readonly', 'Enum']
 
  const arrSmashFunc = (arr, n) => {
     let  ff = []

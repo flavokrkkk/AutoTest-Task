@@ -48,6 +48,7 @@ describe('3. SubArrayMax', () => {
     describe('Имеет базовое условие на тип возвращаемого значения', () => {
             it('Проверка условия', () => {
                 assert.isArray(subArrayMax([[14, 2, -1], [55, 23, 11, -11], [2, 7, 1]]),  [14, 55, 7])
+                assert.deepEqual(subArrayMax([['AMD', 'SDS', -1], [55, 23, 11, -11], [2, 7, 1]]),  [NaN, 55, 7]);
             });
 
     })
@@ -125,8 +126,8 @@ describe('6. CopyElByArray', () => {
         it('Подставление значений', () => {
            assert.deepEqual(copyElByArray([1, 2, 3], [4, 5], 1), [4, 1, 2, 3, 5]);
            assert.deepEqual(copyElByArray(['hell', 4, 1], [3, 'very'], 0), ['hell', 4, 1, 3, 'very']);
-           assert.deepEqual(copyElByArray([1, 4], [8, 2, 3, 5], 2), [8, 2, 1, 4, 3, 5]);
-           assert.deepEqual(copyElByArray([9, 7, 5, 1, 4], [11, 23], 3), [11, 23, 9, 7, 5, 1, 4 ]);
+           assert.deepEqual(copyElByArray([1, 4], ['Bob', 2, 'clever', 5], 2), ['Bob', 2, 1, 4, 'clever', 5]);
+           assert.deepEqual(copyElByArray([9, null, 5, 1, 'myName'], [11, 23], 3), [11, 23, 9, null, 5, 1, 'myName' ]);
         });
 
     });
@@ -187,9 +188,9 @@ describe('9.ArrSmashFunc', () => {
     describe('Заполняет массив числами от 1 до n', () => {
 
         it('Подставление значений', () => {
-            assert.deepEqual(arrSmashFunc([1, 2, 3, 4, 5, 6], 2), [[1, 2], [1, 2], [1, 2]])
-            assert.deepEqual(arrSmashFunc([1, 2, 3, 4, 5, 6], 3), [[1, 2, 3], [1, 2, 3]])
-            assert.deepEqual(arrSmashFunc([1, 2, 3, 4, 5, 6], 4), [[1, 2, 3, 4], [1, 2, 3, 4]])
+            assert.deepEqual(arrSmashFunc([1, null, 3, 4, 5, 6], 2), [[1, null], [1, null], [1, null]])
+            assert.deepEqual(arrSmashFunc(['Never', 'Any', 'Void', 'Extends', 'Readonly', 'Enum'], 3), [ [ 'Never', 'Any', 'Void' ], [ 'Never', 'Any', 'Void' ] ])
+            assert.notDeepEqual(arrSmashFunc([{id: 1, title: 'Hello'}, 2, 3, 4, 5, 6], 4), [[{id: 1, title: 'Hello'}, 2, 3, 4], [1, 2, 3, 4]])
         });
     });
 });
@@ -201,8 +202,9 @@ describe('10. ArrPushNum', () => {
     describe('Имеет базовое условие для функции с рекурсией', () => {
 
         it('Проверка условия', () => {
-            assert.isArray(arrPushNum(5, []))
-            assert.isArray(arrPushNum(-1, []))
+            assert.isArray(arrPushNum(5, []), [5, 4, 3, 2, 1])
+            assert.isArray(arrPushNum(-1, []), [])
+            assert.isArray(arrPushNum('Hello', []), [])
         });
     })
 
@@ -214,6 +216,7 @@ describe('10. ArrPushNum', () => {
             assert.deepEqual(arrPushNum(10, []), [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]);
             assert.deepEqual(arrPushNum(3, []), [3, 2, 1]);
             assert.deepEqual(arrPushNum(0, []), []);
+            assert.deepEqual(arrPushNum('Hello', []), []);
         });
     });
 });
